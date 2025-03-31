@@ -1,0 +1,109 @@
+openapi: 3.0.0
+# Added by API Auto Mocking Plugin
+servers:
+  - description: Booking
+    url: http://localhost/api/
+
+info:
+  description: Документация разработки методов для сервиса бронирования
+  version: "1.0.0"
+  title: Booking API
+  contact:
+    name: Utin Aleksandr
+    url: http://localhost
+    email: dev@dev.net
+  license:
+    name: Apache 2.0
+    url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
+
+tags:
+  - name: Ресурсы
+    description: API для работы с ресурсами бронирования
+
+paths:
+  /resources:
+    post:
+      tags:
+        - Ресурсы
+      summary: Добавление ресурса
+      description: Добавление ресурса
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: Название ресурса
+                type:
+                  type: string
+                  description: Тип ресурса
+                description:
+                  type: string
+                  description: Описаие ресурса
+      responses:
+        '201':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Resources'
+        '422':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Validation'
+
+components:
+  schemas:
+    Resources:
+      type: object
+      properties:
+        id:
+          nullable: false
+          type: integer
+          description: ID ресурса
+          example: 5
+        name:
+          type: string
+          nullable: false
+          description: 'Название ресурса'
+          example: 'BMW'
+        type:
+          type: string
+          nullable: false
+          description: 'Тип ресурса'
+          example: 'Автомобиль'
+        description:
+          type: string
+          nullable: false
+          description: 'Описание ресурса'
+          example: 'BMW X7'
+        created_at:
+          type: string
+          nullable: false
+          description: 'Дата добавления ресурса'
+          example: '2025-03-23 18:59:12'
+        updated_at:
+          type: string
+          nullable: false
+          description: 'Дата добавления ресурса'
+          example: '2025-03-23 18:59:12'
+    Validation:
+      type: object
+      properties:
+        type:
+          type: array
+          items:
+            type: string
+            nullable: false
+            description: Отображается поле и ошибка в запросе
+            example: The type field must be a string."
+   

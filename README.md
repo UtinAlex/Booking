@@ -1,9 +1,16 @@
-Project Launch
+<p> Project Launch </p>
 
-composer install
-./vendor/bin/sail up
-./vendor/bin/sail artisan migrate
-From .env.example we create .env
+<p> composer install </p>
+<p> ./vendor/bin/sail up </p>
+<p> ./vendor/bin/sail artisan migrate </p>
+<p> From .env.example we create .env </p>
+<p> ./vendor/bin/sail test </p>
+
+<p> API doc </p>
+<p> resources-api.yaml </p>
+<p> https://editor.swagger.io/ </p>
+
+
 
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
