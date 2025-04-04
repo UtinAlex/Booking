@@ -23,7 +23,7 @@ class ResourcesController extends Controller
      */
     public function index()
     {
-        //
+        return ResourcesResource::collection($this->resourcesService->index());
     }
 
     /**

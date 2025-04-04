@@ -60,6 +60,22 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Validation'
+  
+  /resources/:
+    get:
+      tags:
+        - Ресурсы
+      summary: Получение списка ресурсов
+      description: Получение списка ресурсов
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/IndexResources'
 
 components:
   schemas:
@@ -106,4 +122,10 @@ components:
             nullable: false
             description: Отображается поле и ошибка в запросе
             example: The type field must be a string."
-   
+    IndexResources:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Resources'

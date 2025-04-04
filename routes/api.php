@@ -9,7 +9,8 @@ Route::prefix('resources')
     ->name('resources.')
     ->group(
         static function () {
-            Route::post('/', [ResourcesController::class, 'store'])->name('store-resources');
+            Route::post('/', [ResourcesController::class, 'store'])->name('storeResources');
+            Route::get('/', [ResourcesController::class, 'index'])->name('indexResources');
         }
     );
 

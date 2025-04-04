@@ -19,4 +19,9 @@ class ResourcesService
         return $this->resourcesRepository->store($data);
     }
 
+    public function index()
+    {
+        return $this->resourcesRepository->index();
+    }
+
 }
