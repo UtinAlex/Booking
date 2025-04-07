@@ -130,6 +130,31 @@ paths:
                 items:
                   $ref: '#/components/schemas/Validation'
 
+  /bookings/{bookingId}:
+    delete:
+      tags:
+        - Бронирование
+      summary: Удалить бронирование
+      description: Этот метод позволяет удалить бронирование ресурсов.
+      parameters:
+        - in: path
+          name: bookingId
+          required: true
+          schema:
+            type: integer
+          description: Id устройства
+      responses:
+        '204':
+          description: noContent
+        '422':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Validation'
+
 components:
   schemas:
     Resources:

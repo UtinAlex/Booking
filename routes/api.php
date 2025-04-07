@@ -20,6 +20,7 @@ Route::prefix('bookings')
     ->group(
         static function () {
             Route::post('/', [BookingController::class, 'store'])->name('storeBookings');
+            Route::delete('/{bookingId}', [BookingController::class, 'destroy'])->name('destroyResources');
         }
     );
 

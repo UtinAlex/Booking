@@ -2,7 +2,7 @@
 
 namespace App\Modules\Booking\Controllers;
 
-use App\Models\Booking;
+use App\Modules\Booking\Models\Booking;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Modules\Booking\Requests\StoreBookingRequest;
@@ -10,6 +10,7 @@ use App\Modules\Booking\Services\BookingService;
 use App\Modules\Booking\Resources\BookingResource;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Support\Facades\Validator;
 
 class BookingController extends Controller
 {
@@ -72,8 +73,18 @@ class BookingController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Booking $booking)
+    public function destroy(int $bookingId)
     {
-        //
+        $validator = Validator::make(['bookingId' => $bookingId], [
+            'bookingId' => 'required|integer|exists:bookings,id',
+        ]);
+        
+        if ($validator->fails()) {
+            return response()->json($validator->errors(), 422);
+        }
+
+        Booking::findOrFail($bookingId)->delete();
+
+        return response()->noContent();
     }
 }

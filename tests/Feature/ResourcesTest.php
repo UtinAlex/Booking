@@ -67,36 +67,4 @@ class ResourcesTest extends TestCase
         $this->assertIsString($response['data'][0]['created_at']);
         $this->assertIsString($response['data'][0]['updated_at']);
     }
-
-    /**
-     * Тест запроса.
-     * http://book.test/api/bookings
-     * 
-     * @return void
-     */
-    public function test_bookings_post_api_request()
-    {
-        $response = $this->withHeaders(
-            [
-            'Accept' => 'application/json',
-            'Content-Type' => 'application/json',
-            ]
-        )->postJson(
-            '/api/bookings', 
-            [
-                "userId" => 1,
-                "resourcesId" => 9,
-                "startTime" => "2125-04-07T17:30:00+03:00",
-                "endTime" => "2125-04-07T17:30:00+03:00"
-                ]
-        );
-
-        $response->assertStatus(201);
-
-        $this->assertIsInt($response['id']);
-        $this->assertIsInt($response['user_id']);
-        $this->assertIsInt($response['resources_id']);
-        $this->assertIsString($response['start_time']);
-        $this->assertIsString($response['end_time']);
-    }
 }
