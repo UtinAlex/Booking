@@ -7,7 +7,7 @@
 <p> ./vendor/bin/sail test </p>
 
 <p> API doc </p>
-<p> resources-api.yaml </p>
+<p> booking-api.yaml </p>
 <p> https://editor.swagger.io/ </p>
 
 

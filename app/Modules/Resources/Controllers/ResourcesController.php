@@ -9,6 +9,7 @@ use App\Modules\Resources\Services\ResourcesService;
 use App\Modules\Resources\Resources\ResourcesResource;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Resources\Json\JsonResource;
 
 class ResourcesController extends Controller
 {
@@ -21,7 +22,7 @@ class ResourcesController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(): JsonResource
     {
         return ResourcesResource::collection($this->resourcesService->index());
     }
@@ -29,7 +30,7 @@ class ResourcesController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreResourcesRequest $request): ResourcesResource
+    public function store(StoreResourcesRequest $request): JsonResource
     {
         return new ResourcesResource($this->resourcesService->store($request->validated()));
         

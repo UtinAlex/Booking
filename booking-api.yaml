@@ -76,6 +76,59 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/IndexResources'
+        '422':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Validation'
+  
+  /bookings:
+    post:
+      tags:
+        - Бронирование
+      summary: Создать бронирование
+      description: Этот метод позволяет создать новое бронирование ресурсов.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                userId:
+                  type: integer
+                  example: 1
+                resourcesId:
+                  type: integer
+                  example: 7
+                startTime:
+                  type: string
+                  format: date-time
+                  example: '2025-04-04T17:30:00+03:00'
+                endTime:
+                  type: string
+                  format: date-time
+                  example: '2025-04-04T18:00:00+03:00'
+      responses:
+        '201':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Booking'
+        '422':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Validation'
 
 components:
   schemas:
@@ -129,3 +182,31 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Resources'
+    Booking:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 2
+        user_id:
+          type: integer
+          example: 1
+        resources_id:
+          type: integer
+          example: 7
+        start_time:
+          type: string
+          format: date-time
+          example: '2025-04-04T17:30:00+03:00'
+        end_time:
+          type: string
+          format: date-time
+          example: '2025-04-04T18:00:00+03:00'
+        created_at:
+          type: string
+          format: date-time
+          example: '2025-04-04T14:02:05.000000Z'
+        updated_at:
+          type: string
+          format: date-time
+          example: '2025-04-04T14:02:05.000000Z'
