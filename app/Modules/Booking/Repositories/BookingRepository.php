@@ -31,21 +31,4 @@ class BookingRepository
             );
         }
     }
-
-    public function index()
-    {
-        try {
-
-            return Resources::all();
-
-        } catch (\Exception $e) {
-            \Log::error("Ошибка при получении списка бронирований: " . $e->getMessage());
-            
-            throw new \App\Exceptions\ProjectException(
-                $e->getMessage(),
-                500,
-                Route::currentRouteName()
-            );
-        }
-    }
 }

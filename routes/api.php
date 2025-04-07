@@ -12,6 +12,7 @@ Route::prefix('resources')
         static function () {
             Route::post('/', [ResourcesController::class, 'store'])->name('storeResources');
             Route::get('/', [ResourcesController::class, 'index'])->name('indexResources');
+            Route::get('/{resourcesId}/bookings', [ResourcesController::class, 'showBookings'])->name('showBookingsResources');
         }
     );
 

@@ -10,6 +10,8 @@ use App\Modules\Resources\Resources\ResourcesResource;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Support\Facades\Validator;
+use App\Modules\Booking\Resources\BookingResource;
 
 class ResourcesController extends Controller
 {
@@ -58,5 +60,21 @@ class ResourcesController extends Controller
     public function destroy(Resources $resources)
     {
         //
+    }
+
+    /**
+     * Display the specified resource.
+     */
+    public function showBookings(int $resourcesId)
+    {
+        $validator = Validator::make(['resourcesId' => $resourcesId], [
+            'resourcesId' => 'required|integer|exists:resources,id',
+        ]);
+        
+        if ($validator->fails()) {
+            return response()->json($validator->errors(), 422);
+        }
+
+        return BookingResource::collection($this->resourcesService->showBookings($resourcesId));
     }
 }

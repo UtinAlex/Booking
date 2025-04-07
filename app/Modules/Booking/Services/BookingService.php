@@ -18,10 +18,4 @@ class BookingService
     {
         return $this->bookingRepository->store($data);
     }
-
-    public function index()
-    {
-        return $this->bookingRepository->index();
-    }
-
 }

@@ -24,4 +24,8 @@ class ResourcesService
         return $this->resourcesRepository->index();
     }
 
+    public function showBookings(int $resourcesId)
+    {
+        return $this->resourcesRepository->showBookings($resourcesId);
+    }
 }

@@ -84,6 +84,37 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Validation'
+
+  /resources/{resourcesId}/bookings:
+    get:
+      tags:
+        - Ресурсы
+      summary: Получение броней ресурсов
+      description: Получение списка броней ресурсов
+      parameters:
+        - in: path
+          name: resourcesId
+          required: true
+          schema:
+            type: integer
+          description: Id ресурса
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/IndexBookingResources'
+        '422':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Validation'
   
   /bookings:
     post:
@@ -142,7 +173,7 @@ paths:
           required: true
           schema:
             type: integer
-          description: Id устройства
+          description: Id брони
       responses:
         '204':
           description: noContent
@@ -207,6 +238,13 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Resources'
+    IndexBookingResources:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Booking'
     Booking:
       type: object
       properties:
